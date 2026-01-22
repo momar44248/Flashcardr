@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome to **Kanji Flashcards** 📘</h2>
+
+    <p>
+      A website to learn JLPT N5 – N2 Kanji in flashcard format.
+    </p>
+
+    {% if user.is_authenticated %}
+      <p>
+        Go to the Flashcards menu and start learning Kanji 💪
+      </p>
+      <a href="{% url 'flashcards' %}" class="action-btn primary">Start learning</a>
+    {% else %}
+      <p>
+        To use Flashcards, please **Login** or **Register**.
+      </p>
+      <div class="auth-buttons">
+          <a href="{% url 'login' %}" class="action-btn primary">Login</a>
+          <a href="{% url 'register' %}" class="action-btn secondary">Register</a>
+      </div>
+    {% endif %}
+</div>
+{% endblock %}
